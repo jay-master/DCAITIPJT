@@ -7,8 +7,9 @@ import os
 from yolo_utils_Kopie import infer_image, show_image
 
 #VIDEO_SOURCE = "/Users/jaehyunlee/PycharmProjects/dcaiti/sample/cam_resize.mp4"
-VIDEO_SOURCE = "https://media.dcaiti.tu-berlin.de/tccams/1c/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450&rotation=0&audio=0&mirror=0&fps=0&compression=0"
-#VIDEO_SOURCE = "https://media.dcaiti.tu-berlin.de/tccams/1c/axis-cgi/mjpg/video.cgi?camera=1&resolution=1280x720&rotation=0&audio=0&mirror=0&fps=0&compression=0"
+#VIDEO_SOURCE = "https://media.dcaiti.tu-berlin.de/tccams/1c/axis-cgi/mjpg/video.cgi?camera=1&resolution=800x450&rotation=0&audio=0&mirror=0&fps=0&compression=0"
+VIDEO_SOURCE = "https://media.dcaiti.tu-berlin.de/tccams/1c/axis-cgi/mjpg/video.cgi?camera=1&resolution=1280x720&rotation=0&audio=0&mirror=0&fps=0&compression=0"
+
 FLAGS = []
 
 if __name__ == '__main__':
@@ -172,6 +173,16 @@ if __name__ == '__main__':
 				count = (count + 1) % 6
 
 			cv2.imshow('webcam', frame)
+
+			"""from yolo_utils_Kopie import fbox
+
+			for j in range(len(fbox)):
+				fx, fy = fbox[j][0], fbox[j][1]
+				fw, fh = fbox[j][2], fbox[j][3]
+
+				cv2.rectangle(img, (fx, fy), (fx + fw, fy + fh), (0, 255, 0), 2)
+				# text = "{}: {:4f}".format(labels[classids[i]], confidences[i])
+				cv2.putText(img, "Free! %d m" % fw, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)"""
 
 			if cv2.waitKey(1) & 0xFF == ord('q'):
 				break
